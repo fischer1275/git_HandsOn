@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, re
+import sys, re		#Imports necessary dependencies/libraries
 from argparse import ArgumentParser
 
 parser = ArgumentParser(description = 'Classify a sequence as DNA or RNA')
