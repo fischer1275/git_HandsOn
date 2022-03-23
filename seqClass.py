@@ -14,16 +14,18 @@ if len(sys.argv) == 1:          #checks how many arguments were given/ if just 1
 
 args = parser.parse_args()                          #set args variable to values of parsed arguments (-s & -m)
 
-args.seq = args.seq.upper()                         # convert all input into upper case
-if re.search('^[ACGTU]+$', args.seq):               # check if any ACGTU is in the sequence 
-    if re.search('T', args.seq):                    # check if any T is in the sequence 
+args.seq = args.seq.upper()                                     # convert all input into upper case
+if re.search('^[ACGTU]+$', args.seq):                           # check if any ACGTU is in the sequence
+    if re.search('T', args.seq) and re.search('U', args.seq):   # check if both T & U are present in the sequence
+        print("Error: sequence contains T & U")
+    elif re.search('T', args.seq):                      # check if any T is in the sequence & U is not 
         print ('The sequence is DNA')
-    elif re.search('U', args.seq):                  # check if any U is in the sequence 
+    elif re.search('U', args.seq):                      # check if any U is in the sequence & T is not 
         print ('The sequence is RNA')
     else:
-        print ('The sequence can be DNA or RNA')
+        print ('The sequence can be DNA or RNA')    #if neiter T or U is present in the sequence to identify DNA or RNA 
 else:
-    print ('The sequence is not DNA nor RNA')
+    print ('The sequence is not DNA nor RNA')       
 
 
 if args.motif:                                      #Check if a motif was given 
